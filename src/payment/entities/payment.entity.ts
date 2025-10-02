@@ -1,5 +1,5 @@
 import { Order } from "src/orders/entities/order.entity";
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 export enum PaymentStatus {
     PENDING = 'pending',
@@ -23,8 +23,9 @@ export class Payment {
     status: PaymentStatus;
 
     @Column()
-    transactionRerence: string;
+    transactionReference: string;
 
     @OneToOne(() => Order, (order) => order.payment )
-    Order: Order
+    @JoinColumn()
+    order: Order
 }

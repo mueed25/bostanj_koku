@@ -23,6 +23,6 @@ export class Order {
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order, { cascade: true })
   items: OrderItem[];
 
-  @OneToOne(() => Payment, (payment) => payment.Order)
+  @OneToOne(() => Payment, (payment) => payment.order)
   payment: Payment;
 }
